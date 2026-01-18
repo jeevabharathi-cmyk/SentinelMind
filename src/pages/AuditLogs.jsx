@@ -1,4 +1,3 @@
-import React from 'react';
 import { Search, Download, Filter, ShieldCheck, History } from 'lucide-react';
 import SanitizedText from '../components/ui/SanitizedText';
 import './AuditLogs.css';

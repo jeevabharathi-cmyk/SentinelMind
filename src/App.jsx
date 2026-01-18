@@ -1,10 +1,11 @@
-import React, { useState, lazy, Suspense } from 'react';
+import { useState, lazy, Suspense } from 'react';
 import { SecurityProvider, useSecurity } from './context/SecurityContext';
 import Sidebar from './components/ui/Sidebar';
 import Header from './components/ui/Header';
 import Login from './components/ui/Login';
 import ErrorBoundary from './components/ui/ErrorBoundary';
 import SecurityHeaders from './components/ui/SecurityHeaders';
+import { Shield, AlertTriangle, Activity, Zap, Settings } from 'lucide-react';
 import './App.css';
 
 // Lazy load pages for production performance

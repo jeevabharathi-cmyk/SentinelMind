@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Lock, Shield, ArrowRight, Fingerprint, AlertCircle } from 'lucide-react';
 import { useSecurity } from '../../context/SecurityContext';
 import './Login.css';
 
 const Login = () => {
-    const { login, verifyMfa, isAuthenticated, mfaVerified } = useSecurity();
-    const [step, setStep] = useState(1);
+    const { login, verifyMfa, isAuthenticated } = useSecurity();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [otp, setOtp] = useState(['', '', '', '', '', '']);
@@ -15,7 +14,6 @@ const Login = () => {
         e.preventDefault();
         if (email && password) {
             login({ email, password });
-            setStep(2);
         }
     };
 

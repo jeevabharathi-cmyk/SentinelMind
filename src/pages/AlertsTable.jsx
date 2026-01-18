@@ -1,5 +1,4 @@
-import React from 'react';
-import { AlertCircle, Clock, ExternalLink, MoreVertical } from 'lucide-react';
+import { Clock, MoreVertical } from 'lucide-react';
 import SanitizedText from '../components/ui/SanitizedText';
 import './AlertsTable.css';
 

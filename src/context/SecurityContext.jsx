@@ -1,16 +1,16 @@
-import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import { createContext, useContext, useState, useEffect, useCallback } from 'react';
 
 const SecurityContext = createContext(null);
+
+// Session Timeout (15 minutes for production security)
+const SESSION_TIMEOUT = 15 * 60 * 1000;
 
 export const SecurityProvider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [user, setUser] = useState(null);
     const [mfaVerified, setMfaVerified] = useState(false);
     const [auditLogs, setAuditLogs] = useState([]);
-    const [lastActivity, setLastActivity] = useState(Date.now());
-
-    // Session Timeout (15 minutes for production security)
-    const SESSION_TIMEOUT = 15 * 60 * 1000;
+    const [lastActivity, setLastActivity] = useState(() => Date.now());
 
     const logAction = useCallback((action, target = 'System') => {
         const newLog = {
@@ -26,7 +26,7 @@ export const SecurityProvider = ({ children }) => {
         console.log(`[Audit Log]: ${action} by ${newLog.actor}`);
     }, [user]);
 
-    const login = (credentials) => {
+    const login = () => {
         // Simulate secure login
         setUser({ name: 'SOC Analyst 01', role: 'SOC Analyst', email: 'analyst@sentinelmind.ai' });
         setIsAuthenticated(true);
@@ -85,4 +85,5 @@ export const SecurityProvider = ({ children }) => {
     );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useSecurity = () => useContext(SecurityContext);

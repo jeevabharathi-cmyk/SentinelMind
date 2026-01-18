@@ -1,7 +1,6 @@
-import React from 'react';
 import {
     LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
-    AreaChart, Area, ScatterChart, Scatter, ZAxis
+    AreaChart, Area
 } from 'recharts';
 import { Activity, Clock, Database, TrendingUp, AlertCircle } from 'lucide-react';
 import './BehavioralAnalytics.css';

@@ -1,5 +1,4 @@
-import React from 'react';
-import { UserPlus, MoreVertical, Shield, Mail, Key, Activity } from 'lucide-react';
+import { UserPlus, MoreVertical, Mail, Key, Activity } from 'lucide-react';
 import './UserManagement.css';
 
 const users = [

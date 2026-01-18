@@ -1,4 +1,3 @@
-import React from 'react';
 import { Search, Bell, User, ShieldCheck, ShieldAlert } from 'lucide-react';
 import { useSecurity } from '../../context/SecurityContext';
 import './Header.css';

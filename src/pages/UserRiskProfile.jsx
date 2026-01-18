@@ -1,7 +1,6 @@
-import React from 'react';
 import {
     Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer,
-    LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, AreaChart, Area
+    XAxis, YAxis, CartesianGrid, Tooltip, AreaChart, Area
 } from 'recharts';
 import { User, Shield, AlertTriangle, Activity, TrendingUp, Clock, FileText } from 'lucide-react';
 import './UserRiskProfile.css';

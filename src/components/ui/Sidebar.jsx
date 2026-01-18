@@ -1,9 +1,7 @@
-import React from 'react';
 import {
     LayoutDashboard,
     ShieldAlert,
     Activity,
-    Database,
     Users,
     Settings,
     LogOut,

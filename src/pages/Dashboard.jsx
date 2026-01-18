@@ -1,7 +1,6 @@
-import React from 'react';
 import {
-    LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
-    AreaChart, Area, BarChart, Bar
+    XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
+    AreaChart, Area, BarChart, Bar, Line
 } from 'recharts';
 import { Shield, AlertTriangle, Activity, Zap } from 'lucide-react';
 import './Dashboard.css';
