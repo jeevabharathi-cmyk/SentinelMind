@@ -1,0 +1,158 @@
+
+ROLE: Senior enterprise SaaS UI/UX designer and frontend engineer.
+
+PRODUCT: SentinelMind – Insider Threat Prediction Platform
+
+Design a professional cybersecurity dashboard web application with:
+- Dark SOC theme
+- Blue, purple, neutral color palette
+- Enterprise SaaS layout
+
+Pages:
+- Secure Login with MFA
+- Risk Overview Dashboard
+- Behavioral Analytics
+- Insider Risk Heatmaps
+- Alerts & Incidents
+- Audit Logs
+- Admin User Management
+
+UX:
+- Privacy-first
+- Data-heavy but readable
+- Responsive design
+    
+
+
+ROLE
+Act as a senior enterprise SaaS product designer, frontend engineer, and security-aware UI architect.
+
+OBJECTIVE
+Generate a commercial-grade, dynamic web application for an Insider Threat Prediction Platform that focuses on preventive security, privacy-preserving analytics, and SOC usability.
+
+PRODUCT NAME
+SentinelMind – Insider Threat Prediction Platform
+
+APPLICATION TYPE
+Enterprise cybersecurity SaaS
+SOC-focused | Preventive | Privacy-first | Scalable for SME to Enterprise
+
+🧠 PRODUCT CONTEXT
+
+Current enterprise tools are complex, expensive, reactive, and invasive.
+This product solves those gaps by:
+
+Detecting behavioral risk patterns, not individuals
+
+Preserving privacy through anonymization
+
+Providing early-warning insights
+
+Being web-first, modular, and scalable
+
+🔐 SECURITY & DESIGN PRINCIPLES
+
+Zero Trust Architecture
+
+Least Privilege Access
+
+Privacy by Design
+
+Defense in Depth
+
+🎨 UI / VISUAL STYLE
+
+Dark SOC theme (default)
+
+Blue, purple, slate, and neutral color palette
+
+Clean, professional enterprise SaaS look
+
+Minimal animations, smooth transitions
+
+High readability for data-heavy dashboards
+
+Sidebar-based dashboard layout
+
+📄 DYNAMIC PAGES TO GENERATE
+AUTHENTICATION
+
+Secure email + password login
+
+MFA (OTP verification flow)
+
+Session security indicators
+
+RISK OVERVIEW DASHBOARD
+
+Overall insider risk score (0–100)
+
+System health indicators
+
+Insider risk trend charts
+
+Real-time alerts counter
+
+BEHAVIORAL ANALYTICS
+
+Login timing deviation graphs
+
+Access frequency analytics
+
+Role-based behavior baselines
+
+Deviation comparisons over time
+
+INSIDER RISK HEATMAP
+
+Visual heatmap of insider risk levels
+
+Time-based and role-based views
+
+Color-coded severity indicators
+
+ALERTS & INCIDENTS
+
+Severity classification (Normal → Critical)
+
+Incident timeline view
+
+Acknowledge / resolve actions
+
+AUDIT & COMPLIANCE
+
+Immutable audit log table
+
+Hash-chain integrity indicator
+
+Search, filter, pagination
+
+ADMIN MANAGEMENT
+
+Role-Based Access Control (RBAC)
+
+MFA enforcement controls
+
+Active session monitoring and revocation
+
+🧠 UX & PRIVACY RULES
+
+No personal employee names displayed
+
+Focus on behavior patterns, not identities
+
+Clear, explainable risk indicators
+
+Color-coded severity levels
+
+Responsive design (desktop & tablet)
+
+⚙️ OUTPUT REQUIREMENTS
+
+React-based frontend
+
+Modular, reusable components
+
+Dynamic charts and tables
+
+Enterprise-ready UI suitable for commercial SaaS deployment

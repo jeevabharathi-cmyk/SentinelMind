@@ -1,0 +1,29 @@
+
+SentinelMind – Insider Threat Prediction Platform
+
+Product Overview:
+SentinelMind is a commercial, privacy-preserving insider threat prediction platform designed to detect risky behavioral patterns before security incidents occur.
+
+Objectives:
+- Early detection of insider risk
+- Privacy-first analytics
+- SME and mid-enterprise friendly
+
+Target Users:
+- SOC Analysts
+- Security Administrators
+- Compliance Teams
+
+Core Features:
+- Secure authentication (RBAC + MFA)
+- Log ingestion (API, CSV)
+- Behavioral baselining (role-based)
+- Risk scoring (0–100)
+- Alerting and dashboards
+- Tamper-proof audit logs
+
+Non-Functional Requirements:
+- <200ms API latency
+- 99.9% availability
+- Horizontal scalability
+- GDPR-style compliance

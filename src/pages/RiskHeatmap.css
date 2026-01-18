@@ -1,0 +1,116 @@
+.heatmap-container {
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+.heatmap-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.heatmap-legend {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+}
+
+.dot.normal {
+    background: rgba(16, 185, 129, 0.2);
+}
+
+.dot.observe {
+    background: rgba(59, 130, 246, 0.4);
+}
+
+.dot.warning {
+    background: rgba(245, 158, 11, 0.6);
+}
+
+.dot.critical {
+    background: rgba(239, 68, 68, 0.8);
+}
+
+.heatmap-grid-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.hour-labels {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 50px;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+
+.heatmap-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.heatmap-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.day-label {
+    width: 40px;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.cells {
+    display: flex;
+    flex: 1;
+    gap: 4px;
+}
+
+.heatmap-cell {
+    flex: 1;
+    aspect-ratio: 1;
+    border-radius: 2px;
+    transition: transform 0.1s;
+    cursor: pointer;
+}
+
+.heatmap-cell:hover {
+    transform: scale(1.2);
+    z-index: 10;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.heatmap-cell.normal {
+    background: rgba(16, 185, 129, 0.1);
+}
+
+.heatmap-cell.observe {
+    background: rgba(59, 130, 246, 0.3);
+}
+
+.heatmap-cell.warning {
+    background: rgba(245, 158, 11, 0.5);
+}
+
+.heatmap-cell.critical {
+    background: rgba(239, 68, 68, 0.7);
+}

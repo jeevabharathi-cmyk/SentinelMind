@@ -1,0 +1,162 @@
+.exfiltration-view {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.exfiltration-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.egress-stats {
+    display: flex;
+    gap: 2rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+}
+
+.egress-stat {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+}
+
+.exfiltration-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 1.5rem;
+}
+
+.exfiltration-card {
+    padding: 1.5rem;
+}
+
+.sankey-placeholder {
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.flow-viz {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+}
+
+.flow-node {
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid var(--border);
+    background: var(--bg-elevated);
+}
+
+.flow-node.internal {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.flow-node.workstation {
+    border-color: var(--secondary);
+    color: var(--secondary);
+}
+
+.flow-node.external {
+    border-color: var(--danger);
+    color: var(--danger);
+}
+
+.flow-arrow {
+    font-size: 1.5rem;
+    color: var(--text-muted);
+}
+
+.flow-arrow.danger {
+    color: var(--danger);
+}
+
+.flow-details {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.detail-item .label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+.detail-item .value {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.egress-alerts {
+    padding: 1.5rem;
+}
+
+.alert-table-mini {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.alert-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    padding: 1rem;
+    align-items: center;
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+.alert-row.header {
+    font-weight: 700;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.alert-row:not(.header) {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid transparent;
+}
+
+.alert-row:not(.header):hover {
+    border-color: var(--border);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.block-btn {
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    border: 1px solid var(--danger);
+    background: transparent;
+    color: var(--danger);
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.block-btn:hover {
+    background: var(--danger);
+    color: white;
+}

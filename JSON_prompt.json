@@ -1,0 +1,117 @@
+{
+  "application_name": "SentinelMind",
+  "category": "Enterprise Cybersecurity SaaS",
+  "purpose": "Preventive insider threat detection using privacy-preserving behavioral analytics",
+  "core_principles": [
+    "Zero Trust Architecture",
+    "Least Privilege Access",
+    "Privacy by Design",
+    "Defense in Depth"
+  ],
+  "user_roles": [
+    "Admin",
+    "SOC Analyst",
+    "Auditor"
+  ],
+  "authentication_security": {
+    "auth_type": "OAuth2 + JWT",
+    "mfa": true,
+    "session_controls": [
+      "HttpOnly cookies",
+      "Secure flag",
+      "Session rotation",
+      "Idle timeout",
+      "IP and device anomaly detection"
+    ]
+  },
+  "core_modules": [
+    "Identity and Access Management",
+    "Log Ingestion Engine",
+    "Behavioral Analytics Engine",
+    "Risk Scoring Engine",
+    "Alerting and Notification System",
+    "Admin Dashboard",
+    "Audit and Compliance Module"
+  ],
+  "log_ingestion": {
+    "sources": [
+      "login_logs",
+      "file_access_logs",
+      "resource_usage_logs"
+    ],
+    "methods": [
+      "REST API",
+      "CSV upload"
+    ],
+    "privacy_controls": [
+      "hashed actor identifiers",
+      "no personal identifiers stored"
+    ]
+  },
+  "behavior_analytics": {
+    "baseline_type": "role_based",
+    "detection": [
+      "login_time_anomalies",
+      "access_frequency_spikes",
+      "unusual_resource_access"
+    ]
+  },
+  "risk_scoring": {
+    "range": "0-100",
+    "formula": {
+      "access_frequency_deviation": 0.4,
+      "time_pattern_deviation": 0.3,
+      "resource_sensitivity": 0.3
+    },
+    "levels": {
+      "0-30": "Normal",
+      "31-60": "Observe",
+      "61-80": "Warning",
+      "81-100": "Critical"
+    }
+  },
+  "alerts": {
+    "trigger": "risk_threshold_exceeded",
+    "delivery": [
+      "dashboard",
+      "email"
+    ]
+  },
+  "data_security": {
+    "encryption_at_rest": "AES-256",
+    "encryption_in_transit": "TLS 1.3",
+    "audit_logs": "hash_chained_immutable"
+  },
+  "api_design": {
+    "auth": [
+      "POST /auth/login",
+      "POST /auth/mfa/verify"
+    ],
+    "logs": [
+      "POST /logs/ingest",
+      "GET /logs/summary"
+    ],
+    "analytics": [
+      "GET /risk/scores",
+      "GET /risk/alerts"
+    ],
+    "admin": [
+      "POST /admin/users",
+      "GET /admin/audit"
+    ]
+  },
+  "tech_stack": {
+    "frontend": "React",
+    "backend": "FastAPI",
+    "database": "PostgreSQL",
+    "cache": "Redis",
+    "background_tasks": "Celery",
+    "ml_optional": true
+  },
+  "non_functional_requirements": {
+    "api_latency": "<200ms",
+    "availability": "99.9%",
+    "scalability": "horizontal",
+    "compliance": "GDPR-style privacy compliance"
+  }
+}
