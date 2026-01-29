@@ -1,26 +1,758 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/SentinelMind/vite.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SentinelMind | Insider Threat Prediction Platform</title>
+    <meta name="description"
+        content="Commercial-grade, privacy-preserving insider threat prediction platform for enterprise security.">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #0a0b10;
+            --bg-surface: #161b22;
+            --bg-elevated: #21262d;
+            --primary: #3b82f6;
+            --primary-glow: rgba(59, 130, 246, 0.5);
+            --secondary: #8b5cf6;
+            --accent: #06b6d4;
+            --text-main: #f0f6fc;
+            --text-muted: #8b949e;
+            --border: #30363d;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --success: #10b981;
+            --glass: rgba(22, 27, 34, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
 
-  <!-- Advanced Security: Content Security Policy -->
-  <meta http-equiv="Content-Security-Policy"
-    content="default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self';" />
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <!-- Production Metadata -->
-  <title>SentinelMind | Insider Threat Prediction Platform</title>
-  <meta name="description"
-    content="Commercial-grade, privacy-preserving insider threat prediction platform for enterprise security." />
-  <meta name="theme-color" content="#0a0b10" />
-  <script type="module" crossorigin src="/SentinelMind/assets/index-yDe88bKP.js"></script>
-  <link rel="stylesheet" crossorigin href="/SentinelMind/assets/index-CqRa8t-p.css">
+        body {
+            font-family: 'Outfit', system-ui, sans-serif;
+            background: var(--bg-deep);
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background: var(--bg-surface);
+            border-right: 1px solid var(--border);
+            padding: 2rem 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-section h4 {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: var(--text-muted);
+        }
+
+        .nav-item:hover {
+            background: var(--bg-elevated);
+            color: var(--text-main);
+        }
+
+        .nav-item.active {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: 0 4px 12px var(--primary-glow);
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 2rem;
+            overflow-y: auto;
+            max-height: 100vh;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .security-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            font-size: 0.875rem;
+        }
+
+        /* Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .stat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .stat-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        .stat-trend {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+
+        .trend-up {
+            color: var(--success);
+        }
+
+        .trend-down {
+            color: var(--danger);
+        }
+
+        /* Charts */
+        .chart-container {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .chart-header h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .chart {
+            height: 300px;
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+        }
+
+        /* Login */
+        .login-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--bg-deep) 0%, var(--bg-surface) 100%);
+        }
+
+        .login-card {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 3rem;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .login-header h2 {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-main);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 0.875rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px var(--primary-glow);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-deep);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-muted);
+        }
+
+        /* Alerts Table */
+        .alerts-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .alerts-table th,
+        .alerts-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .alerts-table th {
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+        }
+
+        .severity-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .severity-critical {
+            background: rgba(239, 68, 68, 0.2);
+            color: var(--danger);
+        }
+
+        .severity-high {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--warning);
+        }
+
+        .severity-medium {
+            background: rgba(59, 130, 246, 0.2);
+            color: var(--primary);
+        }
+    </style>
 </head>
 
 <body>
-  <div id="root"></div>
+    <!-- Login Screen -->
+    <div id="loginScreen" class="login-container">
+        <div class="login-card animate-fade-in">
+            <div class="login-header">
+                <h2>🛡️ SentinelMind</h2>
+                <p style="color: var(--text-muted);">Insider Threat Prediction Platform</p>
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" class="form-input" placeholder="admin" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" class="form-input" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn-primary">Sign In</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Application -->
+    <div id="mainApp" class="app-container hidden">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <span>🛡️</span>
+                <span>SentinelMind</span>
+            </div>
+
+            <nav>
+                <div class="nav-section">
+                    <h4>Overview</h4>
+                    <div class="nav-item active" data-page="dashboard">
+                        <span>📊</span>
+                        <span>Dashboard</span>
+                    </div>
+                    <div class="nav-item" data-page="analytics">
+                        <span>🧠</span>
+                        <span>Behavioral Analytics</span>
+                    </div>
+                    <div class="nav-item" data-page="heatmap">
+                        <span>🗺️</span>
+                        <span>Risk Heatmap</span>
+                    </div>
+                </div>
+
+                <div class="nav-section">
+                    <h4>Monitoring</h4>
+                    <div class="nav-item" data-page="user-profile">
+                        <span>👤</span>
+                        <span>User Risk Profile</span>
+                    </div>
+                    <div class="nav-item" data-page="exfiltration">
+                        <span>📤</span>
+                        <span>Data Exfiltration</span>
+                    </div>
+                    <div class="nav-item" data-page="alerts">
+                        <span>🚨</span>
+                        <span>Alerts & Incidents</span>
+                    </div>
+                </div>
+
+                <div class="nav-section">
+                    <h4>Administration</h4>
+                    <div class="nav-item" data-page="audit">
+                        <span>📋</span>
+                        <span>Audit Logs</span>
+                    </div>
+                    <div class="nav-item" data-page="users">
+                        <span>👥</span>
+                        <span>User Management</span>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="header">
+                <h1 id="pageTitle">Risk Overview</h1>
+                <div class="security-badge">
+                    <span>🔒</span>
+                    <span>Secure Session</span>
+                </div>
+            </div>
+
+            <div id="pageContent"></div>
+        </main>
+    </div>
+
+    <script>
+        // Authentication
+        const loginForm = document.getElementById('loginForm');
+        const loginScreen = document.getElementById('loginScreen');
+        const mainApp = document.getElementById('mainApp');
+
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username && password) {
+                loginScreen.classList.add('hidden');
+                mainApp.classList.remove('hidden');
+                loadPage('dashboard');
+            }
+        });
+
+        // Navigation
+        const navItems = document.querySelectorAll('.nav-item');
+        const pageTitle = document.getElementById('pageTitle');
+        const pageContent = document.getElementById('pageContent');
+
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navItems.forEach(nav => nav.classList.remove('active'));
+                item.classList.add('active');
+                const page = item.dataset.page;
+                loadPage(page);
+            });
+        });
+
+        // Page Content
+        function loadPage(page) {
+            const titles = {
+                'dashboard': 'Risk Overview',
+                'analytics': 'Behavioral Analytics',
+                'heatmap': 'Risk Heatmap',
+                'user-profile': 'User Risk Profile',
+                'exfiltration': 'Data Exfiltration Monitor',
+                'alerts': 'Alerts & Incidents',
+                'audit': 'Audit Logs',
+                'users': 'User Management'
+            };
+
+            pageTitle.textContent = titles[page] || 'SentinelMind';
+
+            const content = {
+                'dashboard': getDashboardContent(),
+                'analytics': getAnalyticsContent(),
+                'heatmap': getHeatmapContent(),
+                'user-profile': getUserProfileContent(),
+                'exfiltration': getExfiltrationContent(),
+                'alerts': getAlertsContent(),
+                'audit': getAuditContent(),
+                'users': getUsersContent()
+            };
+
+            pageContent.innerHTML = content[page] || '<p>Page not found</p>';
+            pageContent.classList.add('animate-fade-in');
+        }
+
+        function getDashboardContent() {
+            return `
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <span class="stat-label">Total Users Monitored</span>
+                            <div class="stat-icon" style="background: rgba(59, 130, 246, 0.2); color: var(--primary);">👥</div>
+                        </div>
+                        <div class="stat-value">1,247</div>
+                        <div class="stat-trend trend-up">↑ 12% from last month</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <span class="stat-label">High Risk Alerts</span>
+                            <div class="stat-icon" style="background: rgba(239, 68, 68, 0.2); color: var(--danger);">🚨</div>
+                        </div>
+                        <div class="stat-value">23</div>
+                        <div class="stat-trend trend-down">↓ 8% from last week</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <span class="stat-label">Avg Risk Score</span>
+                            <div class="stat-icon" style="background: rgba(245, 158, 11, 0.2); color: var(--warning);">📊</div>
+                        </div>
+                        <div class="stat-value">42.3</div>
+                        <div class="stat-trend trend-up">↑ 3.2 points</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <span class="stat-label">Active Sessions</span>
+                            <div class="stat-icon" style="background: rgba(16, 185, 129, 0.2); color: var(--success);">⚡</div>
+                        </div>
+                        <div class="stat-value">892</div>
+                        <div class="stat-trend trend-up">↑ 156 active now</div>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3>Risk Trend Analysis</h3>
+                        <select style="padding: 0.5rem; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 6px; color: var(--text-main);">
+                            <option>Last 7 Days</option>
+                            <option>Last 30 Days</option>
+                            <option>Last 90 Days</option>
+                        </select>
+                    </div>
+                    <div class="chart">📈 Risk trend visualization (Chart library integration)</div>
+                </div>
+
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3>Recent Critical Alerts</h3>
+                    </div>
+                    <table class="alerts-table">
+                        <thead>
+                            <tr>
+                                <th>User</th>
+                                <th>Alert Type</th>
+                                <th>Severity</th>
+                                <th>Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>john.doe@company.com</td>
+                                <td>Unusual Data Access</td>
+                                <td><span class="severity-badge severity-critical">Critical</span></td>
+                                <td>2 hours ago</td>
+                            </tr>
+                            <tr>
+                                <td>sarah.smith@company.com</td>
+                                <td>Off-hours Login</td>
+                                <td><span class="severity-badge severity-high">High</span></td>
+                                <td>5 hours ago</td>
+                            </tr>
+                            <tr>
+                                <td>mike.jones@company.com</td>
+                                <td>Multiple Failed Logins</td>
+                                <td><span class="severity-badge severity-medium">Medium</span></td>
+                                <td>1 day ago</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            `;
+        }
+
+        function getAnalyticsContent() {
+            return `
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3>Behavioral Pattern Analysis</h3>
+                    </div>
+                    <div class="chart">🧠 ML-powered behavioral analytics visualization</div>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">94.7%</div>
+                        <div class="stat-label">Model Accuracy</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">127</div>
+                        <div class="stat-label">Anomalies Detected</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">8.2s</div>
+                        <div class="stat-label">Avg Detection Time</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function getHeatmapContent() {
+            return `
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3>Organizational Risk Heatmap</h3>
+                    </div>
+                    <div class="chart">🗺️ Interactive department risk heatmap</div>
+                </div>
+            `;
+        }
+
+        function getUserProfileContent() {
+            return `
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3>Individual User Risk Assessment</h3>
+                    </div>
+                    <div class="chart">👤 Detailed user risk profile and behavior timeline</div>
+                </div>
+            `;
+        }
+
+        function getExfiltrationContent() {
+            return `
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3>Data Exfiltration Monitoring</h3>
+                    </div>
+                    <div class="chart">📤 Real-time data transfer monitoring and alerts</div>
+                </div>
+            `;
+        }
+
+        function getAlertsContent() {
+            return `
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3>All Security Alerts</h3>
+                    </div>
+                    <table class="alerts-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>User</th>
+                                <th>Alert Type</th>
+                                <th>Severity</th>
+                                <th>Status</th>
+                                <th>Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#A-1247</td>
+                                <td>john.doe@company.com</td>
+                                <td>Unusual Data Access</td>
+                                <td><span class="severity-badge severity-critical">Critical</span></td>
+                                <td>Open</td>
+                                <td>2 hours ago</td>
+                            </tr>
+                            <tr>
+                                <td>#A-1246</td>
+                                <td>sarah.smith@company.com</td>
+                                <td>Off-hours Login</td>
+                                <td><span class="severity-badge severity-high">High</span></td>
+                                <td>Investigating</td>
+                                <td>5 hours ago</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            `;
+        }
+
+        function getAuditContent() {
+            return `
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3>System Audit Logs</h3>
+                    </div>
+                    <div class="chart">📋 Comprehensive audit trail and compliance logs</div>
+                </div>
+            `;
+        }
+
+        function getUsersContent() {
+            return `
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3>User Management</h3>
+                    </div>
+                    <div class="chart">👥 User administration and access control</div>
+                </div>
+            `;
+        }
+    </script>
 </body>
 
 </html>
