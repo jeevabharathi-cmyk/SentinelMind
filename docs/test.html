@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Pages Test - SentinelMind</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0b10 0%, #161b22 100%);
+            color: #f0f6fc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(22, 27, 34, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 3rem;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+            border-radius: 20px;
+            font-weight: 600;
+            margin: 1rem 0;
+        }
+
+        .info {
+            color: #8b949e;
+            line-height: 1.6;
+            margin: 1.5rem 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.875rem 2rem;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .timestamp {
+            margin-top: 2rem;
+            font-size: 0.875rem;
+            color: #8b949e;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🛡️ SentinelMind</h1>
+        <div class="status">✅ GitHub Pages is Working!</div>
+
+        <div class="info">
+            <p><strong>Deployment Status:</strong> Active</p>
+            <p><strong>Source:</strong> /docs folder</p>
+            <p><strong>Branch:</strong> master</p>
+        </div>
+
+        <p class="info">
+            If you can see this page, GitHub Pages is configured correctly!
+            <br>
+            Click below to access the full SentinelMind application.
+        </p>
+
+        <a href="index.html" class="btn">Launch SentinelMind →</a>
+
+        <div class="timestamp">
+            Last deployed: <span id="timestamp"></span>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('timestamp').textContent = new Date().toLocaleString();
+    </script>
+</body>
+
+</html>
